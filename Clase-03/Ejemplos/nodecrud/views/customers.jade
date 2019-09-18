@@ -1,0 +1,32 @@
+extends layouts/header.jade
+
+block content
+			.page-data
+				.data-btn
+					button(onClick="addUser();") + Add
+				.data-table
+					table(border="1" cellpadding="7" cellspacing="7")
+						tr
+							//th(width="50px") No
+							th Name
+							th Address
+							th Phone
+							th Email
+							th(width="120px") Action
+							
+						if data.length == 0
+							tr
+								td(colspan="3") No user
+						else
+							for persona in data
+								tr
+									//td=(i+1)
+									td=persona.name
+									td=persona.address
+									td=persona.phone
+									td=persona.email
+									td
+										a.a-inside.edit(href="../customers/edit/#{persona.id}") Edit
+										a.a-inside.delete(href="../customers/delete/#{persona.id}") Delete
+
+			include layouts/footer.jade

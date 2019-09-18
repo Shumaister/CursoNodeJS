@@ -1,0 +1,30 @@
+extends layout
+     
+block content
+	section
+		form(action='/nueva', method='post')
+			label Nombre:
+			input(name='nombre')
+			label Ciudad:
+			input(name='ciudad')
+			input(type='submit', value='Guardar')
+		
+		
+	section
+		if universidades.length == 0
+			p No existen universidades en la base de datos
+		else
+			table
+				tr
+					th Universidad
+					th Ciudad
+					th
+				for universidad in universidades
+					tr
+						td=universidad.nombre
+						td=universidad.ciudad
+						td
+							a(href='/editar/#{universidad.id}')
+								img(src='/img/edit.png', alt='Editar')
+							a(href='/borrar/#{universidad.id}')
+								img(src='/img/delete.png', alt="Borrar')

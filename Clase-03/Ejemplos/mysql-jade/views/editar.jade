@@ -1,0 +1,11 @@
+extends layout
+     
+block content
+	section
+		form(action='/actualizar', method='post')
+			input(type='hidden', name='id', value=universidad.id)
+			label Nombre:
+			input(name='nombre', value=universidad.nombre)
+			label Ciudad:
+			input(name='ciudad', value=universidad.ciudad)
+			input(type='submit', value='Actualizar')

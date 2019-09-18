@@ -1,0 +1,30 @@
+extends layouts/header.jade
+
+block content
+			.page-data
+			
+				form(method="post" action="/customers/edit/#{data[0].id}")
+					table(cellpadding="11")
+						tr
+							td.label Name
+							td :
+								input(type="text" name="name" value="#{data[0].name}" required)
+						tr
+							td.label(valign="top") Address
+							td(valign="top") :
+								textarea(name="address" required cols="30" rows="5") #{data[0].address}
+						tr
+							td.label Email
+							td :
+								input(type="text" value="#{data[0].email}" name="email" required)
+						tr
+							td.label Phone
+							td :
+								input(type="text" name="phone" value="#{data[0].phone}" required)
+						tr
+							td.label
+							td
+								input(type="submit" name="submit" value="Save")
+								input(type="button" name="cancel" value="Cancel" class="cancel" onClick="cancelAdd()")
+							
+			include layouts/footer.jade
